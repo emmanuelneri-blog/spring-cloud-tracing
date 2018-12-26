@@ -21,18 +21,18 @@ public class TripController {
    private Logger logger = LoggerFactory.getLogger(TripController.class);
 
    @Autowired
-   private Tickets tickets;
+   private Tickets ticketsClient;
    @Autowired
-   private Accommodations accommodations;
+   private Accommodations accommodationsClient;
 
     @GetMapping
     public Trip getTrip() {
         logger.info("get trip");
 
-        final List<Ticket> tickets = this.tickets.getTickets();
-        final List<Accommodation> accommodation = accommodations.getAccommodation();
+        final List<Ticket> tickets = ticketsClient.getTickets();
+        final List<Accommodation> accommodations = accommodationsClient.getAccommodation();
 
-        return new Trip("Brasil", "BC", accommodation, tickets);
+        return new Trip("Brasil", "BC", accommodations, tickets);
     }
 
     @Value
