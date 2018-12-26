@@ -4,6 +4,20 @@ services:
     image: tracing/trips
     ports:
       - "8080:8080"
+    depends_on:
+      - zipkin
+  tickets:
+    image: tracing/tickets
+    ports:
+      - "8090:8090"
+    depends_on:
+      - zipkin
+  accommodations:
+    image: tracing/accommodations
+    ports:
+      - "8070:8070"
+    depends_on:
+      - zipkin
   zipkin:
     image: openzipkin/zipkin
     ports:
